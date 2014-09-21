@@ -1,0 +1,95 @@
+;;; Facts about the families of the fictional 'Harry Potter' universe.
+(fact (married arthur molly))
+(fact (married molly arthur))
+
+(fact (father arthur bill))
+(fact (father arthur charlie))
+(fact (father arthur percy))
+(fact (father arthur fred))
+(fact (father arthur george))
+(fact (father arthur ron))
+(fact (father arthur ginny))
+
+
+
+(fact (mother molly bill))
+(fact (mother molly charlie))
+(fact (mother molly percy))
+(fact (mother molly fred))
+(fact (mother molly george))
+(fact (mother molly ron))
+(fact (mother molly ginny))
+
+(fact (father james harry))
+(fact (mother lily harry))
+
+(fact (married harry ginny))
+(fact (married ginny harry))
+
+(fact (father harry james_sirius))
+(fact (father harry albus_severus))
+(fact (father harry lily_luna))
+
+(fact (mother ginny james_sirius))
+(fact (mother ginny albus_severus))
+(fact (mother ginny lily_luna))
+
+(fact (married ron hermione))
+(fact (married hermione ron))
+
+(fact (father ron rose))
+(fact (father ron hugo))
+
+(fact (mother hermione rose))
+(fact (mother hermione hugo))
+
+(fact (married bill fleur))
+(fact (married fleur bill))
+
+(fact (father bill victoire))
+(fact (father bill louis))
+(fact (father bill dominique))
+
+(fact (mother fleur victoire))
+(fact (mother fleur louis))
+(fact (mother fleur Dominique))
+
+(fact (parent ?who ?child)
+      (father ?who ?child))
+
+(fact (parent ?who ?child)
+      (mother ?who ?child))
+
+
+
+(query (mother molly ?children))
+(query (married ?who ?towhom))
+
+(fact (sibling ?a ?b) (mother ?c ?a) (mother ?c ?b))
+(query (sibling ron fred))
+(query (sibling fred ?who))
+(query (sibling ?a ?b))
+
+(fact (reverse () ()))
+logic> (fact (member ?a (?b . ?rest)) (member ?a ?rest))
+logic> (fact (member ?a (?a . ?rest))
+       )
+logic> (query (member 3 (7 4 3)))
+Success!
+logic> (query (member 5 (7 4 3)))
+Failed.
+logic> (query (member 2 (7 4 3)))
+Failed.
+logic> (query (member 7 (7 4 3)))
+Success!
+logic> (fact (equal-lists () ()))
+logic> (fact (equal-lists (?a . ?rest1) (?a . ?rest2)) (equal-lists ?rest1 ?rest2))
+logic> (query (equal-lists (1 8 2) (1 8 2)))
+Success!
+logic> (fact (append () ?x ?x))
+logic> (fact (append (?car . ?cdr) ?b (?car . ?rest)) (append ?cdr ?b ?rest))
+logic> (fact (reverse () ()))
+logic> (fact (reverse (?a . ?b) ?c) (reverse ?b ?d) (append ?d (?a) ?c))
+logic> (query (reverse (1 2 3) (3 2 1)))
+Success!
+logic> 
